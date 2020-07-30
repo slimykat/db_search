@@ -10,7 +10,8 @@ ____
 
 ### Functions
 
->	db_search(coll, target_keys, start = 0, size = 100,index_include = [], index_exclude = ["_id"], filter_keywords = {})
+>	db_search(coll, target_keys, start = 0, size = 100, index_include = [], index_exclude = ["_id"], filter_keywords = {})
+
 >1.		coll : database collection
 >2. 	target_keys : list of string, the keys you wish to search
 >3. 	start, size : starting point and the size to search
