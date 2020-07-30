@@ -1,12 +1,15 @@
 # Database Search tool
 * language : python3
+
 Searching tool for nested-structure dictionary
 ____
 
-##usage
+## Usage
+
 	> import search.py
 
-###functions
+### Functions
+
 	> db_search(coll, target_keys, start = 0, size = 100, 
 		index_include = [], index_exclude = ["_id"], filter_keywords = {})
 
