@@ -1,3 +1,4 @@
+import pymongo
 
 def nest_flatten(dict_object, parrent = "", sep = "_"):
 	new_dict = {}

@@ -1,5 +1,6 @@
 # Database Search tool
 * language : python3
+* required : pymongo, a working mongo database
 
 Searching tool for nested-structure dictionary
 ____
