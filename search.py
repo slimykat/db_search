@@ -1,10 +1,18 @@
 import pymongo
 
-def nest_flatten(dict_object, parrent = "", sep = "_"):
+def get_keys(flat):
+    
+	name_tags = set()
+	for entry in list(flat.keys()):
+	    tags = entry.split(".")
+	    for tag in tags:
+	        name_tags.add(tag)
+	return name_tags
+
+def nest_flatten(dict_object, parrent = "", sep = ".", ChangeName = True):
 	new_dict = {}
 	for key,value in list(dict_object.items()):
-		#new_key = parrent + sep + key if(parrent) else key
-		new_key = key
+		new_key = (parrent + sep + key if(parrent) else key) if(ChangeName) else key
 		#print(new_key)
 		#print(type(value))
 		if(type(value) == dict):
@@ -14,16 +22,16 @@ def nest_flatten(dict_object, parrent = "", sep = "_"):
 	return new_dict
 
 
-def db_search(coll, target_keys, start = 0, size = 100,
-	index_include = [], index_exclude = ["_id"], filter_keywords = {}):
+def db_search(coll, target_keys, changename,
+	index_include = [], index_exclude = ["_id"], filter_keywords = {}, slimit=10 ):
 	#find({filtered index:"value"},{expected index:bool, ...})
 
-	filter_index = dict.fromkeys(index_exclude,0).update(dict.fromkeys(index_include,1)) # merge dict
+	filter_index = {**dict.fromkeys(index_exclude,0), **(dict.fromkeys(index_include,1))} # merge dict
 	search_result = []
-	for line in coll.find(filter_keywords,filter_index)[start:size]:
-		entry = nest_flatten(line)
-		
-		if any (key in entry for key in target_keys):
+	for line in coll.find(filter_keywords,filter_index).limit(slimit):
+		flat = nest_flatten(line, ChangeName=changename)
+		keys = get_keys(flat)
+		if (any (key in entry for key in target_keys) or len(target_keys) ==0 ):
 		#if all (key in entry for key in target_keys):
 			search_result.append(line)
 
