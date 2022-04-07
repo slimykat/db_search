@@ -8,7 +8,7 @@ ____
 ## Purpose(2022/04/07 edit)
 This is my first practice project when I started my position as an RA in NTU Wireless and Mobile Networking Laboratory.
 
-The topic was how to interact with database and json-stucture data, meanwhile I attempted to make my study process into a github project and develope my code in more mature fasion (ofcourse, upon reviewing my work a year after, these code is not that mature and refined).
+The topic was how to interact with database and json-stucture data, meanwhile I attempted to make my study process into a github project and develope my code in more mature fasion (ofcourse, upon reviewing my work now, these code is not that mature and refined).
 
 This was the first time managing a repo and I didn't understand the importance of testing and backups. Many of my learning progression was not recorded and some thought process was missing in the pepo. I've learned the experience from this exercise and eventually changed my way of coding.
 
